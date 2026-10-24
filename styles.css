@@ -348,8 +348,13 @@ em {
   background: var(--bg-3);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 1.8rem;
+  overflow: clip;
 }
+.testi-photo { aspect-ratio: 4/3; overflow: clip; }
+.testi-photo img { width: 100%; height: 100%; object-fit: cover; filter: saturate(1.05) contrast(1.05); }
+.testi-card > .stars, .testi-card > .testi-name, .testi-card > .testi-quote, .testi-card > .testi-date { margin-inline: 1.8rem; }
+.testi-card > .stars { margin-top: 1.5rem; }
+.testi-card > .testi-date { margin-bottom: 1.8rem; }
 .stars { display: flex; gap: 2px; color: var(--gold); margin-bottom: .9rem; }
 .testi-name { font-weight: 700; margin-bottom: .5rem; }
 .testi-quote { color: var(--cream-2); margin-bottom: 1rem; }
@@ -395,14 +400,15 @@ em {
 .branch-art {
   aspect-ratio: 4/3;
   border-bottom: 1px solid var(--line);
-  overflow: clip;
+  color: var(--cream-3);
+  display: grid; place-items: center;
+  padding: 1.5rem;
 }
-.branch-art img {
-  width: 100%; height: 100%; object-fit: cover;
-  filter: saturate(1.05) contrast(1.05);
+.branch-art svg {
+  width: 100%; max-width: 150px; height: auto;
   transition: transform .5s var(--ease-out);
 }
-.branch-card:hover .branch-art img { transform: scale(1.06); }
+.branch-card:hover .branch-art svg { transform: scale(1.06); }
 .branch-body { padding: 1.6rem; display: flex; flex-direction: column; gap: .9rem; }
 .branch-body h3 { font-size: 1.5rem; }
 .branch-address { color: var(--cream-2); min-height: 3em; }
