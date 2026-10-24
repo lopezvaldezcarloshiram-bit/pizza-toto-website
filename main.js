@@ -124,6 +124,7 @@
       return b;
     });
 
+    var bgImg = $(".hero-bg-img");
     var index = 0;
     function render(i) {
       var s = slides[i];
@@ -131,6 +132,13 @@
       title.innerHTML = '<span>' + escHTML(s.title) + "</span>";
       text.textContent = s.text;
       dots.forEach(function (d, di) { d.classList.toggle("is-active", di === i); });
+      if (bgImg && s.img && bgImg.src !== s.img) {
+        bgImg.style.opacity = "0";
+        setTimeout(function () {
+          bgImg.src = s.img;
+          bgImg.style.opacity = "1";
+        }, 350);
+      }
     }
     dots.forEach(function (d, i) {
       d.addEventListener("click", function () { index = i; render(index); restart(); });

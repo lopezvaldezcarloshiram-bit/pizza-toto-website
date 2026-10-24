@@ -210,6 +210,7 @@ em {
 .hero-bg-img {
   width: 100%; height: 100%; object-fit: cover;
   filter: saturate(1.1) contrast(1.08) brightness(.75);
+  transition: opacity .35s ease;
 }
 .hero-bg::after {
   content: ""; position: absolute; inset: 0;
@@ -339,6 +340,20 @@ em {
    12. Branches
    ============================================================= */
 .branches { padding-block: clamp(2.5rem, 5vw, 4.5rem); }
+.branches-hero {
+  position: relative;
+  height: clamp(180px, 32vw, 320px);
+  margin-bottom: 2.5rem;
+  overflow: clip;
+}
+.branches-hero img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: saturate(1.05) contrast(1.05) brightness(.55);
+}
+.branches-hero::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(0deg, var(--bg) 0%, transparent 60%);
+}
 .branches h2 { font-size: clamp(2rem, 6vw, 3.5rem); margin-bottom: 3rem; }
 .branches-grid { display: grid; gap: 1.6rem; }
 .branch-card {
