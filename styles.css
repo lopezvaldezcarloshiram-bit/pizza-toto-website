@@ -201,86 +201,68 @@ em {
    ============================================================= */
 .hero {
   position: relative;
-  min-height: 92svh;
-  display: flex; align-items: center;
-  padding-block: 6rem 4rem;
+  min-height: 86svh;
+  display: flex; align-items: flex-end;
+  padding-block: 2rem 3rem;
   overflow: clip;
 }
-.hero-mesh {
-  position: absolute; inset: 0;
-  background: radial-gradient(60% 50% at 50% 0%, rgba(255,255,255,.05), transparent 70%);
-  z-index: 0;
+.hero-bg { position: absolute; inset: 0; z-index: 0; }
+.hero-bg-img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: saturate(1.1) contrast(1.08) brightness(.75);
+}
+.hero-bg::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(0deg, var(--bg) 5%, rgba(10,10,10,.35) 45%, rgba(10,10,10,.15) 100%);
 }
 .hero-grain {
-  position: absolute; inset: 0; z-index: 0; opacity: .05; mix-blend-mode: overlay; pointer-events: none;
+  position: absolute; inset: 0; z-index: 1; opacity: .06; mix-blend-mode: overlay; pointer-events: none;
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%25" height="100%25" filter="url(%23n)"/></svg>');
 }
-.hero-inner {
-  position: relative; z-index: 1;
-  display: flex; flex-direction: column-reverse; align-items: center; gap: 2.5rem;
-  text-align: center;
-}
-.hero-art {
-  width: clamp(220px, 42vw, 440px);
-  border-radius: var(--radius);
-  overflow: clip;
-  box-shadow: 0 40px 80px -30px rgba(0,0,0,.6);
-  border: 1px solid var(--line);
-}
-.hero-art-img {
-  width: 100%; aspect-ratio: 4/5; object-fit: cover;
-  filter: saturate(1.08) contrast(1.05);
-  animation: artFloat 6s ease-in-out infinite;
-}
-@keyframes artFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-.hero-content { max-width: 640px; }
+.hero-inner { position: relative; z-index: 2; width: 100%; }
+.hero-content { max-width: 760px; }
 .hero-title {
-  font-size: clamp(2.6rem, 8vw, 5.2rem);
+  font-size: clamp(2.8rem, 9vw, 6rem);
   margin-bottom: 1rem;
 }
 .hero-sub {
   color: var(--cream-2);
   font-size: clamp(1rem, 2vw, 1.2rem);
   max-width: 46ch;
-  margin-inline: auto;
 }
-.hero-actions { display: flex; flex-wrap: wrap; gap: .9rem; justify-content: center; margin-top: 1.8rem; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: .9rem; margin-top: 1.8rem; }
 .hero-dots {
-  position: relative; z-index: 1;
-  display: flex; justify-content: center; gap: .5rem;
+  position: relative; z-index: 2;
+  display: flex; gap: .5rem;
   margin-top: 2rem;
 }
 .hero-dots button {
   width: 8px; height: 8px; border-radius: 50%;
-  background: var(--line);
+  background: rgba(255,255,255,.35);
   transition: background .3s, transform .3s;
 }
 .hero-dots button.is-active { background: var(--accent); transform: scale(1.3); }
 
-@media (min-width: 720px) {
-  .hero-inner { flex-direction: row; text-align: left; gap: 4rem; }
-  .hero-sub { margin-inline: 0; }
-  .hero-actions { justify-content: flex-start; }
-}
-
 /* =============================================================
    8. Feature sections
    ============================================================= */
-.feature { padding-block: clamp(4rem, 8vw, 7rem); }
+.feature { padding-block: 0; }
 .feature-grid {
-  display: grid; gap: 2.5rem;
-  align-items: center;
+  display: grid; gap: 0;
+  align-items: stretch;
 }
-.feature-art {
-  border-radius: var(--radius); overflow: clip; border: 1px solid var(--line);
-  box-shadow: 0 30px 60px -28px rgba(0,0,0,.55);
-}
+.feature-art { overflow: clip; }
 .feature-art img {
-  width: 100%; aspect-ratio: 4/3; object-fit: cover;
+  width: 100%; height: 100%; min-height: 320px; object-fit: cover;
   filter: saturate(1.05) contrast(1.05);
   transition: transform .6s var(--ease-out);
 }
 .feature-art:hover img { transform: scale(1.04); }
+.feature-copy {
+  padding: 2rem clamp(1.25rem, 4vw, 3rem);
+  background: var(--bg-2);
+  display: flex; flex-direction: column; justify-content: center;
+}
 .feature-copy h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 1.2rem; }
 .feature-copy p { color: var(--cream-2); margin-bottom: 1rem; max-width: 56ch; }
 .feature-copy .btn { margin-top: .6rem; }
@@ -295,7 +277,7 @@ em {
    ============================================================= */
 .banner {
   position: relative;
-  padding-block: clamp(5rem, 14vw, 9rem);
+  padding-block: clamp(3rem, 8vw, 5.5rem);
   text-align: center;
   overflow: clip;
   background: var(--bg-2);
@@ -322,7 +304,7 @@ em {
 /* =============================================================
    10. Story / video
    ============================================================= */
-.story { padding-block: clamp(4rem, 8vw, 7rem); }
+.story { padding-block: clamp(2.5rem, 5vw, 4.5rem); }
 .story-inner { text-align: center; }
 .story h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 2rem; }
 .video-frame {
@@ -337,7 +319,7 @@ em {
 /* =============================================================
    11. Testimonials
    ============================================================= */
-.testimonials { padding-block: clamp(4rem, 8vw, 7rem); background: var(--bg-2); }
+.testimonials { padding-block: clamp(2.5rem, 5vw, 4.5rem); background: var(--bg-2); }
 .testimonials h2 { font-size: clamp(1.9rem, 4.5vw, 2.8rem); margin-bottom: 3rem; }
 .testi-grid { display: grid; gap: 1.5rem; }
 .testi-card {
@@ -356,7 +338,7 @@ em {
 /* =============================================================
    12. Branches
    ============================================================= */
-.branches { padding-block: clamp(4rem, 8vw, 7rem); }
+.branches { padding-block: clamp(2.5rem, 5vw, 4.5rem); }
 .branches h2 { font-size: clamp(2rem, 6vw, 3.5rem); margin-bottom: 3rem; }
 .branches-grid { display: grid; gap: 1.6rem; }
 .branch-card {
@@ -396,7 +378,7 @@ em {
 /* =============================================================
    13. Franchise
    ============================================================= */
-.franchise { padding-block: clamp(4rem, 8vw, 7rem); background: var(--bg-2); }
+.franchise { padding-block: clamp(2.5rem, 5vw, 4.5rem); background: var(--bg-2); }
 .franchise-grid { display: grid; gap: 2.5rem; align-items: center; }
 .franchise-copy h2 { font-size: clamp(1.9rem, 4.5vw, 2.8rem); margin-bottom: 1rem; }
 .franchise-copy > p { color: var(--cream-2); margin-bottom: 1.6rem; }
@@ -414,7 +396,7 @@ em {
 /* =============================================================
    14. Instagram
    ============================================================= */
-.instagram { padding-block: clamp(3.5rem, 7vw, 5.5rem); text-align: center; }
+.instagram { padding-block: clamp(2.5rem, 5vw, 4rem); text-align: center; }
 .instagram-inner { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
 .instagram-inner svg { color: var(--gold); }
 .instagram h2 { font-size: clamp(1.8rem, 4.5vw, 2.6rem); }
@@ -435,7 +417,7 @@ em {
 /* =============================================================
    15. Contact
    ============================================================= */
-.contact { padding-block: clamp(4rem, 8vw, 7rem); background: var(--bg-2); }
+.contact { padding-block: clamp(2.5rem, 5vw, 4.5rem); background: var(--bg-2); }
 .contact-grid { display: grid; gap: 2.5rem; }
 .contact-copy h2 { font-size: clamp(1.9rem, 4.5vw, 2.8rem); margin-bottom: 1rem; }
 .contact-copy p { color: var(--cream-2); margin-bottom: 1.6rem; max-width: 46ch; }
@@ -469,5 +451,5 @@ em {
    17. Reduced motion — only intrusive effects
    ============================================================= */
 @media (prefers-reduced-motion: reduce) {
-  .hero-mesh, .splash-mark-img, .hero-art-img { animation: none; }
+  .splash-mark-img { animation: none; }
 }

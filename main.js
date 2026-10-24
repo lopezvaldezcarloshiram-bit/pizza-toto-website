@@ -202,7 +202,7 @@
   function initParallax() {
     if (!window.gsap || !window.ScrollTrigger || reduced) return;
     gsap.registerPlugin(ScrollTrigger);
-    var art = $(".hero-art-img");
+    var art = $(".hero-bg-img");
     if (!art) return;
     gsap.to(art, {
       y: -30,
