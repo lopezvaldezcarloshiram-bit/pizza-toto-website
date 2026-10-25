@@ -485,6 +485,14 @@ em {
 .footer-links { display: flex; gap: 1.4rem; flex-wrap: wrap; }
 .footer-links a { color: var(--cream-2); font-size: .9rem; }
 .footer-links a:hover { color: var(--cream); }
+.footer-social { display: flex; gap: .9rem; }
+.footer-social a {
+  display: grid; place-items: center;
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid var(--line); color: var(--cream-2);
+  transition: color .25s, border-color .25s, transform .25s;
+}
+.footer-social a:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-2px); }
 .footer-copy { color: var(--cream-3); font-size: .85rem; width: 100%; text-align: center; }
 
 @media (min-width: 720px) { .footer-copy { width: auto; text-align: left; } }
